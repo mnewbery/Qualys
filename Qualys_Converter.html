@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <meta charset="utf-8" >
+        <meta name="viewport" content="width=device-width, initial-scale=1">                
+        <title>Qualys Converter</title>
+        <script src="./Qualys_Converter.js" ></script>
+        <link rel="stylesheet" href="./default_style.css" ></style>
+    </HEAD>
+    <BODY>
+        <H4><span>JavaScript code file version:</span><span id="code_file_version" name="code_file_version"></span></H1>
+        <H1>Use this utility to convert Qualys format</H1>
+        <H2>Convert XML to CSV. Edit the CSV file then convert back to XML</H2>
+        <H3>Instructions </H3>
+        <UL>
+            <li>Take a XML file exported from Qualys, using this tool convert it to CSV.</li>
+            <li>Edit the CSV file using Excel, do global search and replace or whatever.</li>
+            <li>Save the CSV file.</li>
+            <li>Using this tool, import the CSV file then convert it back to XML.</li>
+            <li>Save the XML file.</li>
+            <li>Upload the XML file in to Qualys.</li>
+            <li>Enjoy!</li>
+        </UL>
+        
+        <div class="form_div">
+            <form id="form_xml_to_csv" name="form_xml_to_csv">
+                <div>
+                    <span class="pre_input">XML File:</span><input type="file" name="input_file_xml" id="input_file_xml" title="input file xml" onchange="this.title=this.files[0].name"/>
+                </div>
+                <br/>
+                <div class="button_box">
+                    <input type="button" name="go_button_xml" id="go_button_xml" onclick="convert_xml_to_csv(input_file_xml.files[0],go_save_csv.checked);" value="Convert XML to CSV" title="Convert XML to CSV">
+                    <input type="checkbox" name="go_save_csv" id="go_save_csv" value="Save to file" title="Save to file"><span>Save to file</span>
+                </div>
+            </form>    
+        </div>
+        <br/>
+        <div class="form_div">
+            <form id="form1" name="form1">
+                <div>
+                    <span class="pre_input">CSV File:</span><input type="file" name="input_file_csv" id="input_file_csv" title="input file csv" onchange="this.title=this.files[0].name" />
+                    
+                </div>
+                <br/>
+                <div class="button_box">
+                    <input type="button" name="go_button_csv" id="go_button_csv" onclick="convert_csv_to_xml(input_file_csv.files[0],go_save_xml.checked);" value="Convert CSV to XML" title="Convert CSV to XML">
+                    <input type="checkbox" name="go_save_xml" id="go_save_xml" value="Save to file" title="Save to file"><span>Save to file</span>
+                </div>
+            </form>
+        </div>
+        <br/>
+        <table id="csv_output" name="csv_output" hidden="true">
+        </table>         
+        <div id="output_div" name="output_div" hidden="true">
+            <div>
+                <label for="output_text">Output:</label>
+            </div>        
+            <span id="output_span">
+                <textarea aria-multiline="true" id="output_text" name="output_text" rows="40" columns="80"></textarea>
+            </span>
+        </div>
+    </BODY>
+</HTML>
